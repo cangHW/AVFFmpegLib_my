@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+    defaultConfig {
+        applicationId "com.devyk.av.ffmpegcmd"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 102
+        versionName "1.0.2"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+        ndk{
+            abiFilters  'arm64-v8a','armeabi-v7a'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+}
+
+dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.12'
+
+    //布局优化者-约束布局
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+
+    //recyclerview 列表控件
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    //显示图片控件
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+
+    //adapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
+
+    //视频剪辑器 SDK
+//    implementation project(path: ':core')
+    implementation project(path: ':TestCore')
+//    implementation 'com.devyk.ffmpeglib:AVFFmpegCore:1.0.1@aar'
+
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutines"
+}
